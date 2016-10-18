@@ -10,16 +10,22 @@ devtools::install_github("hadley/fueleconomy")
 
 # Require/library the fueleconomy package
 
+library(fueleconomy)
 
 # Which Accura model has the best hwy MPG in 2015? (without method chaining)
 
-
+acuras <- filter(vehicles, make == 'Acura')
+acuras.2015 <- filter(acuras, year == 2015)
+best.hwy <- summarise(acuras.2015$hwy, max = max(amount))
 # Which Accura model has the best hwy MPG in 2015? (nesting functions)
 
 
 # Which Accura model has the best hwy MPG in 2015? (pipe operator)
 
-
+best.model <- filter(vehicles, make == 'Acura', year == 2015) %>%
+  filter(hwy == max(hwy)) %>%
+  select(model)
+best.model
 ### Bonus ###
 
 # Write 3 functions, one for each approach.  Then, 
