@@ -2,19 +2,21 @@
 
 # Install devtools package: allows installations from GitHub
 install.packages('devtools')
-
+#install.packages("digest")
+#library(digest)
 # Install "fueleconomy" package from GitHub
 devtools::install_github("hadley/fueleconomy")
 
 # Require/library the fueleconomy package
-
+library(fueleconomy)
 
 # You should have have access to the `vehicles` data.frame
 
+data(vehicles)
 
 # Create a data.frame of vehicles from 1997
-
-
+is.data.frame(vehicles)
+vehicles.1997 <- vehicles[which(vehicles$year == 1997),]
 # Use the `unique` function to verify that there is only 1 value in the `year` column of your new data.frame
 
 
